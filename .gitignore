@@ -1,0 +1,25 @@
+# Node dependency folders
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment files (sensitive credentials)
+.env
+server/.env
+client/.env
+.env*.local
+
+# Production build outputs
+dist/
+client/dist/
+build/
+
+# Local media upload folders
+server/uploads/
+server/uploads/*
+
+# System files
+.DS_Store
+Thumbs.db
+.agents/
+.gemini/
