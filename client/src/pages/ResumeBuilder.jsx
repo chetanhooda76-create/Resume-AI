@@ -91,53 +91,53 @@ const ResumeBuilder = () => {
     switch (selectedTemplate) {
       case 'modern':
         return (
-          <div className="space-y-6">
+          <div style={{ color: '#1e293b', fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
             {/* Header */}
-            <div className="border-b-2 border-indigo-600 pb-4 flex justify-between items-end">
+            <div style={{ borderBottom: '2px solid #4f46e5', paddingBottom: '16px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '20px' }}>
               <div>
-                <h1 className="text-3xl font-bold tracking-tight text-slate-900" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <h1 style={{ fontSize: '28px', fontWeight: 'bold', letterSpacing: '-0.5px', margin: '0', color: '#0f172a' }}>
                   {personalInfo.name || 'Candidate Name'}
                 </h1>
-                <p className="text-xs text-indigo-600 font-semibold tracking-wider uppercase mt-1" style={{ fontFamily: 'Inter, sans-serif' }}>
+                <p style={{ fontSize: '12px', color: '#4f46e5', fontWeight: '600', letterSpacing: '1px', textTransform: 'uppercase', margin: '4px 0 0 0' }}>
                   {targetRole || 'Professional'}
                 </p>
               </div>
-              <div className="text-right text-[9px] text-slate-500 space-y-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
+              <div style={{ textAlign: 'right', fontSize: '9px', color: '#64748b', lineHeight: '1.4' }}>
                 {personalInfo.email && <div>{personalInfo.email}</div>}
                 {personalInfo.phone && <div>{personalInfo.phone}</div>}
                 {personalInfo.website && <div>{personalInfo.website}</div>}
-                <div className="flex justify-end gap-2 mt-1">
-                  {personalInfo.github && <span className="font-semibold text-slate-600">GH</span>}
-                  {personalInfo.linkedin && <span className="font-semibold text-indigo-600">LI</span>}
+                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px', marginTop: '4px' }}>
+                  {personalInfo.github && <span style={{ fontWeight: '600', color: '#475569' }}>GH</span>}
+                  {personalInfo.linkedin && <span style={{ fontWeight: '600', color: '#4f46e5' }}>LI</span>}
                 </div>
               </div>
             </div>
 
             {/* Summary */}
             {personalInfo.summary && (
-              <div>
-                <h3 className="text-xs font-bold tracking-wider text-indigo-600 uppercase mb-1.5" style={{ fontFamily: 'Inter, sans-serif' }}>Professional Summary</h3>
-                <p className="text-[10px] leading-relaxed text-slate-600">{personalInfo.summary}</p>
+              <div style={{ marginBottom: '16px' }}>
+                <h3 style={{ fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase', color: '#4f46e5', marginBottom: '6px', margin: '0' }}>Professional Summary</h3>
+                <p style={{ fontSize: '10px', color: '#475569', margin: '0', lineHeight: '1.5' }}>{personalInfo.summary}</p>
               </div>
             )}
 
             {/* Experience */}
             {experience.length > 0 && (
-              <div>
-                <h3 className="text-xs font-bold tracking-wider text-indigo-600 uppercase mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>Work Experience</h3>
-                <div className="space-y-4">
+              <div style={{ marginBottom: '20px' }}>
+                <h3 style={{ fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase', color: '#4f46e5', marginBottom: '8px', margin: '0' }}>Work Experience</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   {experience.map((exp, i) => (
                     <div key={i}>
-                      <div className="flex justify-between items-start">
-                        <h4 className="text-[11px] font-bold text-slate-800">
-                          {exp.position} <span className="font-normal text-slate-400">at</span> {exp.company}
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                        <h4 style={{ fontSize: '11px', fontWeight: 'bold', color: '#1e293b', margin: '0' }}>
+                          {exp.position} <span style={{ fontWeight: 'normal', color: '#94a3b8' }}>at</span> {exp.company}
                         </h4>
-                        <span className="text-[9px] text-slate-500 font-medium" style={{ fontFamily: 'Inter, sans-serif' }}>
+                        <span style={{ fontSize: '9px', color: '#64748b', fontWeight: '500' }}>
                           {exp.startDate} – {exp.current ? 'Present' : exp.endDate}
                         </span>
                       </div>
-                      <div className="text-[8px] text-slate-400 mt-0.5">{exp.location}</div>
-                      <p className="text-[9.5px] leading-relaxed text-slate-600 mt-1.5" style={{ whiteSpace: 'pre-line' }}>{exp.description}</p>
+                      <div style={{ fontSize: '8px', color: '#94a3b8', marginTop: '2px' }}>{exp.location}</div>
+                      <p style={{ fontSize: '9.5px', color: '#475569', margin: '6px 0 0 0', whiteSpace: 'pre-line', lineHeight: '1.4' }}>{exp.description}</p>
                     </div>
                   ))}
                 </div>
@@ -146,19 +146,19 @@ const ResumeBuilder = () => {
 
             {/* Projects */}
             {projects.length > 0 && (
-              <div>
-                <h3 className="text-xs font-bold tracking-wider text-indigo-600 uppercase mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>Key Projects</h3>
-                <div className="space-y-4">
+              <div style={{ marginBottom: '20px' }}>
+                <h3 style={{ fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase', color: '#4f46e5', marginBottom: '8px', margin: '0' }}>Key Projects</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                   {projects.map((proj, i) => (
                     <div key={i}>
-                      <div className="flex justify-between items-baseline">
-                        <h4 className="text-[11px] font-bold text-slate-800">{proj.title}</h4>
-                        {proj.link && <span className="text-[8px] text-slate-400">{proj.link}</span>}
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                        <h4 style={{ fontSize: '11px', fontWeight: 'bold', color: '#1e293b', margin: '0' }}>{proj.title}</h4>
+                        {proj.link && <span style={{ fontSize: '8px', color: '#94a3b8' }}>{proj.link}</span>}
                       </div>
-                      <div className="text-[9px] font-semibold text-indigo-500 mt-0.5" style={{ fontFamily: 'Inter, sans-serif' }}>
+                      <div style={{ fontSize: '9px', fontWeight: '600', color: '#6366f1', marginTop: '2px' }}>
                         Tech Stack: {proj.technologies.join(', ')}
                       </div>
-                      <p className="text-[9.5px] leading-relaxed text-slate-600 mt-1" style={{ whiteSpace: 'pre-line' }}>{proj.description}</p>
+                      <p style={{ fontSize: '9.5px', color: '#475569', margin: '4px 0 0 0', whiteSpace: 'pre-line', lineHeight: '1.4' }}>{proj.description}</p>
                     </div>
                   ))}
                 </div>
@@ -166,18 +166,18 @@ const ResumeBuilder = () => {
             )}
 
             {/* Two Column Layout for education, skills, certs */}
-            <div className="grid grid-cols-2 gap-6 pt-2 border-t border-slate-100">
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', paddingTop: '8px', borderTop: '1px solid #f1f5f9' }}>
               {/* Left Side: Education */}
-              <div className="space-y-4">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {education.length > 0 && (
                   <div>
-                    <h3 className="text-xs font-bold tracking-wider text-indigo-600 uppercase mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>Education</h3>
-                    <div className="space-y-3">
+                    <h3 style={{ fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase', color: '#4f46e5', marginBottom: '8px', margin: '0' }}>Education</h3>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                       {education.map((edu, i) => (
-                        <div key={i} className="text-[9.5px]">
-                          <div className="font-bold text-slate-800">{edu.degree} in {edu.fieldOfStudy}</div>
-                          <div className="text-slate-600">{edu.school}</div>
-                          <div className="text-[8.5px] text-slate-400 mt-0.5">{edu.startDate} – {edu.endDate}</div>
+                        <div key={i} style={{ fontSize: '9.5px' }}>
+                          <div style={{ fontWeight: 'bold', color: '#1e293b' }}>{edu.degree} in {edu.fieldOfStudy}</div>
+                          <div style={{ color: '#475569' }}>{edu.school}</div>
+                          <div style={{ fontSize: '8.5px', color: '#94a3b8', marginTop: '2px' }}>{edu.startDate} – {edu.endDate}</div>
                         </div>
                       ))}
                     </div>
@@ -186,12 +186,12 @@ const ResumeBuilder = () => {
 
                 {certifications.length > 0 && (
                   <div>
-                    <h3 className="text-xs font-bold tracking-wider text-indigo-600 uppercase mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>Certifications</h3>
-                    <div className="space-y-2">
+                    <h3 style={{ fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase', color: '#4f46e5', marginBottom: '8px', margin: '0' }}>Certifications</h3>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {certifications.map((cert, i) => (
-                        <div key={i} className="text-[9.5px]">
-                          <div className="font-bold text-slate-800">{cert.name}</div>
-                          <div className="text-slate-500">{cert.issuer} • {cert.date}</div>
+                        <div key={i} style={{ fontSize: '9.5px' }}>
+                          <div style={{ fontWeight: 'bold', color: '#1e293b' }}>{cert.name}</div>
+                          <div style={{ color: '#64748b' }}>{cert.issuer} • {cert.date}</div>
                         </div>
                       ))}
                     </div>
@@ -200,20 +200,20 @@ const ResumeBuilder = () => {
               </div>
 
               {/* Right Side: Skills */}
-              <div className="space-y-4">
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 {(skills.technical.length > 0 || skills.soft.length > 0) && (
                   <div>
-                    <h3 className="text-xs font-bold tracking-wider text-indigo-600 uppercase mb-2" style={{ fontFamily: 'Inter, sans-serif' }}>Skills</h3>
+                    <h3 style={{ fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', textTransform: 'uppercase', color: '#4f46e5', marginBottom: '8px', margin: '0' }}>Skills</h3>
                     {skills.technical.length > 0 && (
-                      <div className="mb-3">
-                        <h4 className="text-[9.5px] font-bold text-slate-800 mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>Technical Expertise</h4>
-                        <p className="text-[9.5px] text-slate-600 leading-relaxed">{skills.technical.join(', ')}</p>
+                      <div style={{ marginBottom: '12px' }}>
+                        <h4 style={{ fontSize: '9.5px', fontWeight: 'bold', color: '#1e293b', marginBottom: '4px', margin: '0' }}>Technical Expertise</h4>
+                        <p style={{ fontSize: '9.5px', color: '#475569', margin: '0', lineHeight: '1.4' }}>{skills.technical.join(', ')}</p>
                       </div>
                     )}
                     {skills.soft.length > 0 && (
                       <div>
-                        <h4 className="text-[9.5px] font-bold text-slate-800 mb-1" style={{ fontFamily: 'Inter, sans-serif' }}>Professional Competencies</h4>
-                        <p className="text-[9.5px] text-slate-600 leading-relaxed">{skills.soft.join(', ')}</p>
+                        <h4 style={{ fontSize: '9.5px', fontWeight: 'bold', color: '#1e293b', marginBottom: '4px', margin: '0' }}>Professional Competencies</h4>
+                        <p style={{ fontSize: '9.5px', color: '#475569', margin: '0', lineHeight: '1.4' }}>{skills.soft.join(', ')}</p>
                       </div>
                     )}
                   </div>
@@ -224,11 +224,13 @@ const ResumeBuilder = () => {
         );
       case 'professional':
         return (
-          <div className="space-y-5 text-slate-900">
+          <div style={{ color: '#0f172a', fontFamily: 'Georgia, serif', lineHeight: '1.5' }}>
             {/* Header */}
-            <div className="text-center space-y-1">
-              <h1 className="text-3xl font-bold tracking-wide uppercase">{personalInfo.name || 'Candidate Name'}</h1>
-              <div className="flex justify-center flex-wrap gap-3 text-[10px] text-slate-600 font-medium">
+            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+              <h1 style={{ fontSize: '26px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', margin: '0 0 6px 0', color: '#0f172a' }}>
+                {personalInfo.name || 'Candidate Name'}
+              </h1>
+              <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', fontSize: '10px', color: '#475569', fontWeight: '500' }}>
                 {personalInfo.email && <span>{personalInfo.email}</span>}
                 {personalInfo.phone && <span>• {personalInfo.phone}</span>}
                 {personalInfo.website && <span>• {personalInfo.website}</span>}
@@ -239,25 +241,29 @@ const ResumeBuilder = () => {
 
             {/* Summary */}
             {personalInfo.summary && (
-              <div className="pt-2">
-                <h3 className="text-[11px] font-bold uppercase tracking-wider border-b border-slate-300 pb-1 mb-2">Professional Profile</h3>
-                <p className="text-[10px] leading-relaxed text-slate-700">{personalInfo.summary}</p>
+              <div style={{ marginTop: '16px' }}>
+                <h3 style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #cbd5e1', paddingBottom: '4px', marginBottom: '8px', color: '#0f172a' }}>
+                  Professional Profile
+                </h3>
+                <p style={{ fontSize: '10.5px', color: '#334155', margin: '0', textAlign: 'justify' }}>{personalInfo.summary}</p>
               </div>
             )}
 
             {/* Experience */}
             {experience.length > 0 && (
-              <div>
-                <h3 className="text-[11px] font-bold uppercase tracking-wider border-b border-slate-300 pb-1 mb-2.5">Employment History</h3>
-                <div className="space-y-3.5">
+              <div style={{ marginTop: '20px' }}>
+                <h3 style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #cbd5e1', paddingBottom: '4px', marginBottom: '10px', color: '#0f172a' }}>
+                  Employment History
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {experience.map((exp, i) => (
                     <div key={i}>
-                      <div className="flex justify-between font-bold text-[10.5px]">
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', fontSize: '11px', color: '#0f172a' }}>
                         <span>{exp.position} – {exp.company}</span>
-                        <span>{exp.startDate} – {exp.current ? 'Present' : exp.endDate}</span>
+                        <span style={{ fontWeight: 'normal', fontSize: '10px', color: '#475569' }}>{exp.startDate} – {exp.current ? 'Present' : exp.endDate}</span>
                       </div>
-                      <div className="text-[8.5px] italic text-slate-500">{exp.location}</div>
-                      <p className="text-[9.5px] leading-relaxed text-slate-700 mt-1" style={{ whiteSpace: 'pre-line' }}>{exp.description}</p>
+                      <div style={{ fontSize: '9px', fontStyle: 'italic', color: '#64748b', marginTop: '2px' }}>{exp.location}</div>
+                      <p style={{ fontSize: '10px', color: '#334155', marginTop: '6px', whiteSpace: 'pre-line', margin: '6px 0 0 0' }}>{exp.description}</p>
                     </div>
                   ))}
                 </div>
@@ -266,16 +272,18 @@ const ResumeBuilder = () => {
 
             {/* Education */}
             {education.length > 0 && (
-              <div>
-                <h3 className="text-[11px] font-bold uppercase tracking-wider border-b border-slate-300 pb-1 mb-2.5">Education</h3>
-                <div className="space-y-2">
+              <div style={{ marginTop: '20px' }}>
+                <h3 style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #cbd5e1', paddingBottom: '4px', marginBottom: '10px', color: '#0f172a' }}>
+                  Education
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {education.map((edu, i) => (
-                    <div key={i} className="flex justify-between text-[10px]">
+                    <div key={i} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10.5px', color: '#0f172a' }}>
                       <div>
-                        <span className="font-bold">{edu.degree} in {edu.fieldOfStudy}</span>
-                        <span className="text-slate-600"> — {edu.school}</span>
+                        <span style={{ fontWeight: 'bold' }}>{edu.degree} in {edu.fieldOfStudy}</span>
+                        <span style={{ color: '#475569' }}> — {edu.school}</span>
                       </div>
-                      <span className="text-slate-500">{edu.startDate} – {edu.endDate}</span>
+                      <span style={{ fontSize: '10px', color: '#64748b' }}>{edu.startDate} – {edu.endDate}</span>
                     </div>
                   ))}
                 </div>
@@ -284,17 +292,19 @@ const ResumeBuilder = () => {
 
             {/* Projects */}
             {projects.length > 0 && (
-              <div>
-                <h3 className="text-[11px] font-bold uppercase tracking-wider border-b border-slate-300 pb-1 mb-2.5">Selected Projects</h3>
-                <div className="space-y-3">
+              <div style={{ marginTop: '20px' }}>
+                <h3 style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #cbd5e1', paddingBottom: '4px', marginBottom: '10px', color: '#0f172a' }}>
+                  Selected Projects
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                   {projects.map((proj, i) => (
                     <div key={i}>
-                      <div className="flex justify-between font-bold text-[10px]">
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold', fontSize: '10.5px', color: '#0f172a' }}>
                         <span>{proj.title}</span>
-                        {proj.link && <span className="font-normal text-slate-500 text-[9px]">{proj.link}</span>}
+                        {proj.link && <span style={{ fontWeight: 'normal', fontSize: '9px', color: '#64748b' }}>{proj.link}</span>}
                       </div>
-                      <div className="text-[9px] text-slate-500 italic mt-0.5">Technologies: {proj.technologies.join(', ')}</div>
-                      <p className="text-[9.5px] leading-relaxed text-slate-750 mt-1" style={{ whiteSpace: 'pre-line' }}>{proj.description}</p>
+                      <div style={{ fontSize: '9px', color: '#64748b', fontStyle: 'italic', marginTop: '2px' }}>Technologies: {proj.technologies.join(', ')}</div>
+                      <p style={{ fontSize: '10px', color: '#334155', marginTop: '4px', whiteSpace: 'pre-line', margin: '4px 0 0 0' }}>{proj.description}</p>
                     </div>
                   ))}
                 </div>
@@ -303,17 +313,19 @@ const ResumeBuilder = () => {
 
             {/* Skills */}
             {(skills.technical.length > 0 || skills.soft.length > 0) && (
-              <div>
-                <h3 className="text-[11px] font-bold uppercase tracking-wider border-b border-slate-300 pb-1 mb-2">Skills Inventory</h3>
-                <div className="text-[10px] space-y-1.5">
+              <div style={{ marginTop: '20px' }}>
+                <h3 style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #cbd5e1', paddingBottom: '4px', marginBottom: '8px', color: '#0f172a' }}>
+                  Skills Inventory
+                </h3>
+                <div style={{ fontSize: '10.5px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   {skills.technical.length > 0 && (
                     <div>
-                      <span className="font-bold">Technical Skills:</span> {skills.technical.join(', ')}
+                      <span style={{ fontWeight: 'bold', color: '#0f172a' }}>Technical Skills:</span> <span style={{ color: '#334155' }}>{skills.technical.join(', ')}</span>
                     </div>
                   )}
                   {skills.soft.length > 0 && (
                     <div>
-                      <span className="font-bold">Soft Skills:</span> {skills.soft.join(', ')}
+                      <span style={{ fontWeight: 'bold', color: '#0f172a' }}>Soft Skills:</span> <span style={{ color: '#334155' }}>{skills.soft.join(', ')}</span>
                     </div>
                   )}
                 </div>
@@ -322,12 +334,14 @@ const ResumeBuilder = () => {
 
             {/* Certifications */}
             {certifications.length > 0 && (
-              <div>
-                <h3 className="text-[11px] font-bold uppercase tracking-wider border-b border-slate-300 pb-1 mb-2">Certifications</h3>
-                <ul className="list-disc list-inside text-[10px] space-y-1">
+              <div style={{ marginTop: '20px' }}>
+                <h3 style={{ fontSize: '11px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', borderBottom: '1px solid #cbd5e1', paddingBottom: '4px', marginBottom: '8px', color: '#0f172a' }}>
+                  Certifications
+                </h3>
+                <ul style={{ paddingLeft: '16px', margin: '0', listStyleType: 'disc', fontSize: '10.5px', color: '#334155' }}>
                   {certifications.map((cert, i) => (
-                    <li key={i} className="text-slate-700">
-                      <span className="font-bold">{cert.name}</span> — {cert.issuer} ({cert.date})
+                    <li key={i} style={{ marginBottom: '4px' }}>
+                      <span style={{ fontWeight: 'bold', color: '#0f172a' }}>{cert.name}</span> — <span style={{ color: '#475569' }}>{cert.issuer} ({cert.date})</span>
                     </li>
                   ))}
                 </ul>
@@ -337,13 +351,13 @@ const ResumeBuilder = () => {
         );
       case 'minimalist':
         return (
-          <div className="space-y-4 text-slate-900" style={{ fontFamily: 'sans-serif' }}>
-            <div className="flex justify-between items-baseline border-b pb-2">
+          <div style={{ color: '#1e293b', fontFamily: 'Inter, sans-serif', lineHeight: '1.5' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', borderBottom: '1px solid #cbd5e1', paddingBottom: '8px', marginBottom: '16px' }}>
               <div>
-                <h1 className="text-2xl font-bold tracking-tight text-slate-900">{personalInfo.name || 'Candidate Name'}</h1>
-                <span className="text-[9.5px] font-semibold text-slate-500">{targetRole || 'Professional'}</span>
+                <h1 style={{ fontSize: '24px', fontWeight: 'bold', letterSpacing: '-0.5px', margin: '0', color: '#0f172a' }}>{personalInfo.name || 'Candidate Name'}</h1>
+                <span style={{ fontSize: '9.5px', fontWeight: '600', color: '#64748b' }}>{targetRole || 'Professional'}</span>
               </div>
-              <div className="text-right text-[8.5px] text-slate-500 space-y-0.5">
+              <div style={{ textAlign: 'right', fontSize: '8.5px', color: '#64748b', lineHeight: '1.4' }}>
                 <div>{personalInfo.email}</div>
                 <div>{personalInfo.phone}</div>
                 <div>{personalInfo.website}</div>
@@ -351,21 +365,21 @@ const ResumeBuilder = () => {
             </div>
 
             {personalInfo.summary && (
-              <div className="text-[9.5px] leading-relaxed text-slate-600">{personalInfo.summary}</div>
+              <div style={{ fontSize: '9.5px', color: '#475569', lineHeight: '1.5', marginBottom: '16px' }}>{personalInfo.summary}</div>
             )}
 
-            <div className="space-y-3 pt-2">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {experience.length > 0 && (
                 <div>
-                  <h3 className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Experience</h3>
-                  <div className="space-y-2">
+                  <h3 style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', color: '#94a3b8', marginBottom: '6px', margin: '0' }}>Experience</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {experience.map((exp, i) => (
-                      <div key={i} className="text-[9.5px]">
-                        <div className="flex justify-between font-bold">
-                          <span>{exp.position} @ {exp.company}</span>
-                          <span className="font-normal text-slate-400">{exp.startDate} – {exp.current ? 'Present' : exp.endDate}</span>
+                      <div key={i} style={{ fontSize: '9.5px' }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold' }}>
+                          <span style={{ color: '#1e293b' }}>{exp.position} @ {exp.company}</span>
+                          <span style={{ fontWeight: 'normal', color: '#94a3b8' }}>{exp.startDate} – {exp.current ? 'Present' : exp.endDate}</span>
                         </div>
-                        <p className="text-slate-600 mt-1" style={{ whiteSpace: 'pre-line' }}>{exp.description}</p>
+                        <p style={{ color: '#475569', margin: '4px 0 0 0', whiteSpace: 'pre-line', lineHeight: '1.4' }}>{exp.description}</p>
                       </div>
                     ))}
                   </div>
@@ -374,20 +388,22 @@ const ResumeBuilder = () => {
 
               {education.length > 0 && (
                 <div>
-                  <h3 className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">Education</h3>
-                  {education.map((edu, i) => (
-                    <div key={i} className="flex justify-between text-[9.5px] mb-1">
-                      <span>{edu.degree} in {edu.fieldOfStudy} — {edu.school}</span>
-                      <span className="text-slate-400">{edu.startDate} – {edu.endDate}</span>
-                    </div>
-                  ))}
+                  <h3 style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', color: '#94a3b8', marginBottom: '6px', margin: '0' }}>Education</h3>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    {education.map((edu, i) => (
+                      <div key={i} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '9.5px' }}>
+                        <span style={{ color: '#1e293b' }}>{edu.degree} in {edu.fieldOfStudy} — {edu.school}</span>
+                        <span style={{ color: '#94a3b8' }}>{edu.startDate} – {edu.endDate}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               )}
 
               {skills.technical.length > 0 && (
                 <div>
-                  <h3 className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">Skills</h3>
-                  <p className="text-[9.5px] text-slate-600">{skills.technical.join(', ')}</p>
+                  <h3 style={{ fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', color: '#94a3b8', marginBottom: '4px', margin: '0' }}>Skills</h3>
+                  <p style={{ fontSize: '9.5px', color: '#475569', margin: '0', lineHeight: '1.4' }}>{skills.technical.join(', ')}</p>
                 </div>
               )}
             </div>
