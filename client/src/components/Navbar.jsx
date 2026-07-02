@@ -25,25 +25,25 @@ const Navbar = () => {
         </Link>
 
         {/* Navigation Links */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 sm:gap-6">
           <Link
             to="/dashboard"
-            className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${
+            className={`flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-white ${
               isActive('/dashboard') ? 'text-indigo-400' : 'text-slate-400'
             }`}
           >
             <LayoutDashboard className="h-4 w-4" />
-            Dashboard
+            <span className="hidden sm:inline">Dashboard</span>
           </Link>
 
           <Link
             to="/profile"
-            className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-white ${
+            className={`flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-white ${
               isActive('/profile') ? 'text-indigo-400' : 'text-slate-400'
             }`}
           >
             <UserIcon className="h-4 w-4" />
-            Profile Settings
+            <span className="hidden sm:inline">Profile Settings</span>
           </Link>
         </div>
 
@@ -69,10 +69,10 @@ const Navbar = () => {
               logout();
               navigate('/login');
             }}
-            className="flex items-center gap-1.5 rounded-lg border border-slate-800 bg-slate-950 px-3 py-1.5 text-xs font-medium text-slate-400 transition-colors hover:border-red-500/30 hover:bg-red-950/20 hover:text-red-400"
+            className="flex items-center gap-1.5 rounded-lg border border-slate-800 bg-slate-950 px-3 py-1.5 text-xs font-medium text-slate-400 transition-colors hover:border-red-500/30 hover:bg-red-950/20 hover:text-red-400 cursor-pointer"
           >
             <LogOut className="h-3.5 w-3.5" />
-            Logout
+            <span className="hidden sm:inline">Logout</span>
           </button>
         </div>
       </div>
