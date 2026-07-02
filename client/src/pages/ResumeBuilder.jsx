@@ -1470,22 +1470,24 @@ const ResumeBuilder = () => {
     </div>
 
       {/* Hidden high-fidelity A4 document for PDF capture */}
-      <div style={{ height: 0, overflow: 'hidden', position: 'absolute', top: 0, left: 0, zIndex: -999 }}>
-        <div 
-          ref={captureRef}
-          style={{
-            width: '794px',
-            minHeight: '1123px',
-            padding: '15mm',
-            background: 'white',
-            color: '#1e293b',
-            fontFamily: 'Georgia, serif',
-            boxShadow: 'none',
-            boxSizing: 'border-box'
-          }}
-        >
-          {renderTemplateContent()}
-        </div>
+      <div 
+        ref={captureRef}
+        style={{
+          position: 'fixed',
+          left: '200vw',
+          top: '200vh',
+          width: '794px',
+          minHeight: '1123px',
+          padding: '15mm',
+          background: 'white',
+          color: '#1e293b',
+          fontFamily: 'Georgia, serif',
+          boxShadow: 'none',
+          boxSizing: 'border-box',
+          zIndex: -9999
+        }}
+      >
+        {renderTemplateContent()}
       </div>
 
       {/* Slide Drawer AI Assistant */}
