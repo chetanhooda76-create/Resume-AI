@@ -36,8 +36,8 @@ const callGemini = async (prompt, systemInstruction = '') => {
       const response = await result.response;
       return response.text().trim();
     } catch (error) {
-      console.error('Gemini API Error:', error);
-      throw new Error(`Gemini API Error: ${error.message}`);
+      console.error('Gemini API Error (falling back to simulator):', error.message);
+      return null;
     }
   } else {
     // Simulator helper
