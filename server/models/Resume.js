@@ -11,6 +11,10 @@ const ResumeSchema = new mongoose.Schema({
     required: [true, 'Please add a resume title'],
     default: 'My Resume',
   },
+  template: {
+    type: String,
+    default: 'modern',
+  },
   personalInfo: {
     name: { type: String, default: '' },
     email: { type: String, default: '' },

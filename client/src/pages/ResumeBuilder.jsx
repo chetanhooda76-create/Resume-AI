@@ -35,9 +35,14 @@ const ResumeBuilder = () => {
   const [mobileView, setMobileView] = useState('edit'); // edit, preview
   const captureRef = useRef(null);
 
-  const handleSelectTemplate = (temp) => {
+  const handleSelectTemplate = async (temp) => {
     setSelectedTemplate(temp);
     localStorage.setItem(`resume_template_${id || 'new'}`, temp);
+    try {
+      await API.put(`/resumes/${id}`, { template: temp });
+    } catch (err) {
+      console.error('Error saving template selection:', err);
+    }
   };
   
   // AI Form states
@@ -65,6 +70,7 @@ const ResumeBuilder = () => {
         if (res.data.success) {
           const data = res.data.data;
           setTitle(data.title || 'My Resume');
+          setSelectedTemplate(data.template || 'modern');
           setPersonalInfo(data.personalInfo || {});
           setEducation(data.education || []);
           setExperience(data.experience || []);
@@ -398,6 +404,7 @@ const ResumeBuilder = () => {
     try {
       const payload = {
         title,
+        template: selectedTemplate,
         personalInfo,
         education,
         experience,
@@ -1447,23 +1454,22 @@ const ResumeBuilder = () => {
     </div>
 
       {/* Hidden high-fidelity A4 document for PDF capture */}
-      <div 
-        ref={captureRef}
-        style={{
-          position: 'absolute',
-          left: '-9999px',
-          top: '-9999px',
-          width: '794px',
-          minHeight: '1123px',
-          padding: '15mm',
-          background: 'white',
-          color: '#1e293b',
-          fontFamily: 'Georgia, serif',
-          boxShadow: 'none',
-          boxSizing: 'border-box'
-        }}
-      >
-        {renderTemplateContent()}
+      <div style={{ height: 0, overflow: 'hidden', position: 'absolute', top: 0, left: 0, zIndex: -999 }}>
+        <div 
+          ref={captureRef}
+          style={{
+            width: '794px',
+            minHeight: '1123px',
+            padding: '15mm',
+            background: 'white',
+            color: '#1e293b',
+            fontFamily: 'Georgia, serif',
+            boxShadow: 'none',
+            boxSizing: 'border-box'
+          }}
+        >
+          {renderTemplateContent()}
+        </div>
       </div>
 
       {/* Slide Drawer AI Assistant */}
