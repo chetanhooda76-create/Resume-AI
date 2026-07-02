@@ -101,35 +101,39 @@ const ResumeBuilder = () => {
     const element = previewRef.current;
     if (!element) return;
 
+    // Create a clone of the preview element to render it in isolation
+    const clone = element.cloneNode(true);
+    
+    // Set style properties to guarantee a desktop A4 layout representation
+    clone.style.position = 'absolute';
+    clone.style.left = '-9999px';
+    clone.style.top = '-9999px';
+    clone.style.display = 'block';
+    clone.style.width = '794px'; // A4 width at 96 DPI
+    clone.style.maxWidth = '794px';
+    clone.style.minHeight = '1123px'; // A4 height
+    clone.style.height = 'auto';
+    clone.style.margin = '0';
+    clone.style.padding = '15mm'; // Keep original margins
+    clone.style.boxShadow = 'none'; // Clear shadows for PDF export
+    
+    // Append clone to body to make it inspectable by html2canvas-pro
+    document.body.appendChild(clone);
+
     try {
-      // Save current inline styles to restore them later
-      const originalWidth = element.style.width;
-      const originalMaxWidth = element.style.maxWidth;
-      const originalMinHeight = element.style.minHeight;
-
-      // Force a standard desktop A4 viewport width on the element for capture
-      element.style.width = '794px';
-      element.style.maxWidth = '794px';
-      element.style.minHeight = '1123px'; // A4 height at 96 DPI
-
-      // Capture the canvas at this desktop width
-      const canvas = await html2canvas(element, {
-        scale: 2, // higher resolution
+      // Capture the cloned element at a desktop viewport configuration
+      const canvas = await html2canvas(clone, {
+        scale: 2, // high resolution
         useCORS: true,
         backgroundColor: '#ffffff',
         width: 794,
-        windowWidth: 794 // Force html2canvas virtual window width to match desktop
+        windowWidth: 794
       });
       
-      // Restore original inline styles immediately
-      element.style.width = originalWidth;
-      element.style.maxWidth = originalMaxWidth;
-      element.style.minHeight = originalMinHeight;
-
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
-      const imgWidth = 210; // A4 size width
-      const pageHeight = 297; // A4 size height
+      const imgWidth = 210; // A4 width in mm
+      const pageHeight = 297; // A4 height in mm
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       let heightLeft = imgHeight;
       let position = 0;
@@ -148,6 +152,9 @@ const ResumeBuilder = () => {
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Check console for details: ' + error.message);
+    } finally {
+      // Remove the cloned element from DOM
+      document.body.removeChild(clone);
     }
   };
 
