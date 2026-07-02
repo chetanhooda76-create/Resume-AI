@@ -102,13 +102,30 @@ const ResumeBuilder = () => {
     if (!element) return;
 
     try {
-      // Use a custom style to fit contents nicely
+      // Save current inline styles to restore them later
+      const originalWidth = element.style.width;
+      const originalMaxWidth = element.style.maxWidth;
+      const originalMinHeight = element.style.minHeight;
+
+      // Force a standard desktop A4 viewport width on the element for capture
+      element.style.width = '794px';
+      element.style.maxWidth = '794px';
+      element.style.minHeight = '1123px'; // A4 height at 96 DPI
+
+      // Capture the canvas at this desktop width
       const canvas = await html2canvas(element, {
         scale: 2, // higher resolution
         useCORS: true,
-        backgroundColor: '#ffffff'
+        backgroundColor: '#ffffff',
+        width: 794,
+        windowWidth: 794 // Force html2canvas virtual window width to match desktop
       });
       
+      // Restore original inline styles immediately
+      element.style.width = originalWidth;
+      element.style.maxWidth = originalMaxWidth;
+      element.style.minHeight = originalMinHeight;
+
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
       const imgWidth = 210; // A4 size width
