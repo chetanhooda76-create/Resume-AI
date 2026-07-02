@@ -270,9 +270,36 @@ const ResumeBuilder = () => {
   }
 
   return (
-    <div className="flex h-[calc(100vh-68px)] overflow-hidden bg-slate-950">
-      {/* Left Workspace Panel */}
-      <div className={`w-full flex-col border-r border-slate-800 bg-slate-900/40 md:flex md:w-1/2 overflow-y-auto ${mobileView === 'edit' ? 'flex' : 'hidden md:flex'}`}>
+    <div className="flex flex-col h-[calc(100vh-68px)] overflow-hidden bg-slate-950">
+      {/* Mobile View Switcher (Sticky at the top, visible only on mobile/tablet) */}
+      <div className="flex border-b border-slate-800 md:hidden bg-slate-950 p-3 gap-3 shrink-0">
+        <button
+          type="button"
+          onClick={() => setMobileView('edit')}
+          className={`flex-1 rounded-lg py-2 text-center text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+            mobileView === 'edit'
+              ? 'bg-indigo-600 text-white shadow-md'
+              : 'text-slate-400 hover:text-slate-200 bg-slate-900/50'
+          }`}
+        >
+          Form Editor
+        </button>
+        <button
+          type="button"
+          onClick={() => setMobileView('preview')}
+          className={`flex-1 rounded-lg py-2 text-center text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+            mobileView === 'preview'
+              ? 'bg-indigo-600 text-white shadow-md'
+              : 'text-slate-400 hover:text-slate-200 bg-slate-900/50'
+          }`}
+        >
+          Live Preview
+        </button>
+      </div>
+
+      <div className="flex flex-1 overflow-hidden">
+        {/* Left Workspace Panel */}
+        <div className={`w-full flex-col border-r border-slate-800 bg-slate-900/40 md:flex md:w-1/2 overflow-y-auto ${mobileView === 'edit' ? 'flex' : 'hidden md:flex'}`}>
         {/* Workspace Toolbar */}
         <div className="flex items-center justify-between border-b border-slate-800 bg-slate-950 px-6 py-4">
           <div className="flex items-center gap-4">
@@ -319,31 +346,7 @@ const ResumeBuilder = () => {
           </div>
         </div>
 
-        {/* Mobile View Switcher (Visible only on mobile/tablet) */}
-        <div className="flex border-b border-slate-800 md:hidden bg-slate-950 p-2 gap-2">
-          <button
-            type="button"
-            onClick={() => setMobileView('edit')}
-            className={`flex-1 rounded-lg py-2 text-center text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
-              mobileView === 'edit'
-                ? 'bg-indigo-600 text-white shadow-md'
-                : 'text-slate-400 hover:text-slate-200 bg-slate-900/50'
-            }`}
-          >
-            Form Editor
-          </button>
-          <button
-            type="button"
-            onClick={() => setMobileView('preview')}
-            className={`flex-1 rounded-lg py-2 text-center text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer ${
-              mobileView === 'preview'
-                ? 'bg-indigo-600 text-white shadow-md'
-                : 'text-slate-400 hover:text-slate-200 bg-slate-900/50'
-            }`}
-          >
-            Live Preview
-          </button>
-        </div>
+
 
         {/* Section Navigation Tabs */}
         <div className="flex items-center gap-1 overflow-x-auto border-b border-slate-800 px-4 py-2 bg-slate-950/40 scrollbar-none">
@@ -1421,6 +1424,7 @@ const ResumeBuilder = () => {
             </div>
           )}
         </div>
+      </div>
       </div>
 
       {/* Slide Drawer AI Assistant */}
